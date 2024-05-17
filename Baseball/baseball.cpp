@@ -12,13 +12,16 @@ class Baseball {
 public:
 	explicit Baseball(const string& question)
 		:question(question) {
-
+		result = { false , 0 ,0 };
 	}
 	GuessResult guess(const string& guessNum) {
 		assertIllegalArgument(guessNum);
+
+		result.strikes = 2;
+
 		if (guessNum == question)
 			return { true,3,0 };
-		return { false, 0,0 };
+		return result;
 	}
 	void assertIllegalArgument(const std::string& guessNum)
 	{
@@ -42,4 +45,5 @@ public:
 	}
 private:
 	string question;
+	GuessResult result;
 };
