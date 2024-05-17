@@ -17,11 +17,17 @@ public:
 	GuessResult guess(const string& guessNum) {
 		assertIllegalArgument(guessNum);
 
-		result.strikes = 2;
+		countStrike(guessNum);
 
 		if (guessNum == question)
 			return { true,3,0 };
 		return result;
+	}
+	void countStrike(const string& guessNum)
+	{
+		for (int i = 0; i < 3; ++i)
+			if (guessNum[i] == question[i])
+				result.strikes++;
 	}
 	void assertIllegalArgument(const std::string& guessNum)
 	{
