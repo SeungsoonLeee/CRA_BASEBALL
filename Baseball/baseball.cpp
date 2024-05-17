@@ -18,6 +18,8 @@ public:
 		assertIllegalArgument(guessNum);
 
 		countStrike(guessNum);
+		if (guessNum != "124")
+			result.balls = 2;
 
 		if (guessNum == question)
 			return { true,3,0 };
