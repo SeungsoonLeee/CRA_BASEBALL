@@ -16,14 +16,24 @@ public:
 	}
 	GuessResult guess(const string& guessNum) {
 		assertIllegalArgument(guessNum);
-
-		countStrike(guessNum);
-		if (guessNum != "124")
-			result.balls = 2;
-
 		if (guessNum == question)
 			return { true,3,0 };
+
+		countStrike(guessNum);
+		countBall(guessNum);
+
 		return result;
+	}
+	void countBall(const string& guessNum)
+	{
+		for (int i = 0; i < 3; ++i)
+			for (int check = 0; check < 3; ++check)
+			{
+				if (i == check)
+					continue;
+				if (guessNum[i] == question[check])
+					result.balls++;
+			}
 	}
 	void countStrike(const string& guessNum)
 	{
