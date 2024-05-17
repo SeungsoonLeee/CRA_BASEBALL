@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "../Baseball/baseball.cpp"
 
+using namespace std;
+
 TEST(TestCaseName, TestName) {
-	EXPECT_EQ(1, 1);
-	EXPECT_EQ(1, 1);
-	EXPECT_EQ(1, 1);
-	EXPECT_EQ(2, 2);
-	EXPECT_EQ(2, 2);
+	Baseball game;
+
+	EXPECT_THROW(game.guess(string("12")), length_error);
 }
