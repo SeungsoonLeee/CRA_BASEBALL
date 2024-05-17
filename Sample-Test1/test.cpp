@@ -3,14 +3,23 @@
 
 using namespace std;
 
-TEST(TestCaseName, ThrowException) {
+class BaseballFixture : public testing::Test
+{
+public:
 	Baseball game;
+	void assertIllegalArgument(string guessNum) {
+		// ASSERT 걸릴 애들
+		try {
+			game.guess(string(guessNum));
+			FAIL();
+		}
+		catch (exception e) {
+			// PASS 
+		}
+	}
+};
 
-	EXPECT_THROW(game.guess(string("12")), length_error);
-}
-
-TEST(TestCaseName, ThrowExceptionWhenInvalidChar) {
-	Baseball game;
-
-	EXPECT_THROW(game.guess(string("12s")), invalid_argument);
+TEST_F(BaseballFixture, ThrowExceptionWhenInvalidCase) {
+	assertIllegalArgument("12");
+	assertIllegalArgument("12s");
 }
