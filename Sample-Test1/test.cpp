@@ -3,7 +3,7 @@
 
 using namespace std;
 
-TEST(TestCaseName, TestName) {
+TEST(TestCaseName, ThrowException) {
 	Baseball game;
 
 	EXPECT_THROW(game.guess(string("12")), length_error);
