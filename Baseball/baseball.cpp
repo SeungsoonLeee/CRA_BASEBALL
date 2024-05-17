@@ -12,6 +12,11 @@ public:
 			if (ch < '0' || ch > '9')
 				throw invalid_argument("Must bo number.");
 		}
-	}
 
+		if (guessNum[0] == guessNum[1]
+			|| guessNum[0] == guessNum[2]
+			|| guessNum[1] == guessNum[2]) {
+			throw invalid_argument("Must not have the same number.");
+		}
+	}
 };
